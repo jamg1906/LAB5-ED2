@@ -348,6 +348,39 @@ namespace SDESLibrary.Cipher
             bitArrays[7] = input[7];
             return bitArrays;
         }
+        private byte DecryptByte(byte character)
+        {
+            BitArray bits = this.ConvertToBits(character);
+            bits = this.InitialPermutation(bits);
+            BitArray bitArrays = this.CopyTo(bits, 0, 4);
+            BitArray bitArrays1 = this.CopyTo(bits, 4, 4);
+            BitArray bitArrays2 = this.ExpandAndPermute(bitArrays1);
+            bitArrays2 = bitArrays2.Xor(this.Key2);
+            BitArray bitArrays3 = this.CopyTo(bitArrays2, 0, 4);
+            BitArray bitArrays4 = this.CopyTo(bitArrays2, 4, 4);
+            BitArray bitArrays5 = this.Concat(this.GetSwapBox0(bitArrays3), this.GetSwapBox1(bitArrays4));
+            bitArrays5 = this.Permutation4(bitArrays5);
+            bitArrays5 = bitArrays5.Xor(bitArrays);
+            BitArray bitArrays6 = this.Concat(bitArrays1, bitArrays5);
+            BitArray bitArrays7 = this.CopyTo(bitArrays6, 4, 4);
+            bitArrays7 = this.ExpandAndPermute(bitArrays7);
+            bitArrays7 = bitArrays7.Xor(this.Key1);
+            bitArrays3 = this.CopyTo(bitArrays7, 0, 4);
+            bitArrays4 = this.CopyTo(bitArrays7, 4, 4);
+            BitArray bitArrays8 = this.Concat(this.GetSwapBox0(bitArrays3), this.GetSwapBox1(bitArrays4));
+            bitArrays8 = this.Permutation4(bitArrays8);
+            BitArray bitArrays9 = this.Concat(bitArrays8.Xor(bitArrays1), bitArrays5);
+            return this.ConvertToByte(this.InverseInitialPermutation(bitArrays9));
+        }
 
+        public byte[] DecryptText(byte[] content)
+        {
+            List<byte> nums = new List<byte>((int)content.Length);
+            for (int i = 0; i < (int)content.Length; i++)
+            {
+                nums.Add(this.DecryptByte(content[i]));
+            }
+            return nums.ToArray();
+        }
     }
 }
