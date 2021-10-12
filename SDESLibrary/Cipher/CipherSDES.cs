@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SDESLibrary.Cipher
 {
-    class CipherSDES
+    public class CipherSDES
     {
         private string[,] SwapBox1;
 
