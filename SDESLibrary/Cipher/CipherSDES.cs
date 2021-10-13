@@ -2,10 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using SDESLibrary.Interfaces;
 
 namespace SDESLibrary.Cipher
 {
-    public class CipherSDES
+    public class CipherSDES : IAlgoritmoCifrado
     {
         private string[,] SwapBox1;
 

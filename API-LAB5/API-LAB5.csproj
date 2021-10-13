@@ -5,5 +5,9 @@
     <RootNamespace>API_LAB5</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SDESLibrary\SDESLibrary.csproj" />
+  </ItemGroup>
+
 
 </Project>
