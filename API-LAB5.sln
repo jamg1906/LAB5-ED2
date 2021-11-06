@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SDESConsoleApp", "SDESConso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSALibrary", "RSALibrary\RSALibrary.csproj", "{7D73A6D7-B0BA-47E2-A96B-64F15E42FB30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSAConsoleApp", "RSAConsoleApp\RSAConsoleApp.csproj", "{D15BF7AA-2E3B-4250-88F5-787B27CB2598}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7D73A6D7-B0BA-47E2-A96B-64F15E42FB30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D73A6D7-B0BA-47E2-A96B-64F15E42FB30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D73A6D7-B0BA-47E2-A96B-64F15E42FB30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D15BF7AA-2E3B-4250-88F5-787B27CB2598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D15BF7AA-2E3B-4250-88F5-787B27CB2598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D15BF7AA-2E3B-4250-88F5-787B27CB2598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D15BF7AA-2E3B-4250-88F5-787B27CB2598}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
