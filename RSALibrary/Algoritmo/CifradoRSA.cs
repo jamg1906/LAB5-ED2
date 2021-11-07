@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 using System.Text;
 
 namespace RSALibrary.Algoritmo
@@ -13,10 +15,8 @@ namespace RSALibrary.Algoritmo
         private int D { get; set; }
         private int N { get; set; }
 
-        public byte[] Cifrar(Parametros data, byte[] bufer)
-        {
-            throw new NotImplementedException();
-        }
+        List<long> salidaRSACifrado = new List<long>();
+        List<byte> salidaRSADescifrado = new List<byte>();
 
         public byte[] Descifrar(Parametros data, byte[] bufer)
         {
@@ -155,6 +155,44 @@ namespace RSALibrary.Algoritmo
                 return true;
             }
         }
+
+        //cifrado
+
+        public byte[] Cifrar(Parametros data, byte[] bufer)
+        {
+            foreach (var item in bufer)
+            {
+                salidaRSACifrado.Add((long)BigInteger.ModPow(item, data.e, data.n));
+            }
+            return ConvertirByte();
+        }
+        byte[] ConvertirByte()
+        {
+            List<byte> validarBytes = new List<byte>();
+            string CodigoBinario = "";
+            int maximoBinario = Convert.ToString(salidaRSACifrado.Max(), 2).Length;
+            foreach (var item in salidaRSACifrado)
+            {
+                CodigoBinario += Convert.ToString(item, 2).PadLeft(maximoBinario, '0');
+                while (CodigoBinario.Length > 8)
+                {
+                    validarBytes.Add(Convert.ToByte(CodigoBinario.Substring(0, 8), 2));
+                    CodigoBinario = CodigoBinario.Remove(0, 8);
+                }
+            }
+            if (CodigoBinario.Length > 0 && CodigoBinario.Length < 8)
+            {
+
+                validarBytes.Add(Convert.ToByte(CodigoBinario.PadRight(8, '0'), 2));
+                CodigoBinario = "";
+            }
+            else if (CodigoBinario.Length == 8)
+            {
+                validarBytes.Add(Convert.ToByte(CodigoBinario, 2));
+            }
+            validarBytes.Insert(0, Convert.ToByte(maximoBinario));
+            return validarBytes.ToArray();
+        } // Pasa a bytes todos los bytes cifrados por rsa
 
     }
 }
