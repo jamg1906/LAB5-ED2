@@ -18,11 +18,6 @@ namespace RSALibrary.Algoritmo
         List<long> salidaRSACifrado = new List<long>();
         List<byte> salidaRSADescifrado = new List<byte>();
 
-        public byte[] Descifrar(Parametros data, byte[] bufer)
-        {
-            throw new NotImplementedException();
-        }
-
         //Generación de llaves
 
         public Parametros ObtenerLlave(Parametros data)
@@ -193,6 +188,49 @@ namespace RSALibrary.Algoritmo
             validarBytes.Insert(0, Convert.ToByte(maximoBinario));
             return validarBytes.ToArray();
         } // Pasa a bytes todos los bytes cifrados por rsa
+
+
+        //descifrado
+
+        public byte[] Descifrar(Parametros data, byte[] bufer)
+        {
+            List<byte> descifrar = bufer.ToList();
+            int LongitudBinarioOriginal = descifrar[0];
+            descifrar.RemoveAt(0);
+            N = data.n;
+            D = data.d;
+            ConvertirByte(descifrar, LongitudBinarioOriginal);
+            return descifrar.ToArray();
+        }
+
+        void ConvertirByte(List<byte> contenido, int BinarioOriginal)
+        {
+            int cout = 0;
+            try
+            {
+
+                string codigoBinario = "";
+
+                foreach (var item in contenido)
+                {
+                    cout++;
+                    codigoBinario += Convert.ToString(item, 2).PadLeft(8, '0');
+                    while (codigoBinario.Length > BinarioOriginal)
+                    {
+                        var newInt = Convert.ToInt64(codigoBinario.Substring(0, BinarioOriginal), 2);
+                        var test = (byte)BigInteger.ModPow(newInt, D, N);
+                        salidaRSADescifrado.Add(Convert.ToByte(test));
+                        codigoBinario = codigoBinario.Remove(0, BinarioOriginal);
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                var test = cout;
+                throw;
+            }
+        }
 
     }
 }
