@@ -200,7 +200,7 @@ namespace RSALibrary.Algoritmo
             N = data.n;
             D = data.d;
             ConvertirByte(descifrar, LongitudBinarioOriginal);
-            return descifrar.ToArray();
+            return salidaRSADescifrado.ToArray();
         }
 
         void ConvertirByte(List<byte> contenido, int BinarioOriginal)
