@@ -1,10 +1,10 @@
-# Laboratorio 5 de Estructura de Datos II 
+# Laboratorio 6 de Estructura de Datos II 
 
 -----------------------------
 
 ## RAMAS
 
-- Main - README
+- RSA 
 
 ## Construido con 🛠️
 
@@ -14,7 +14,7 @@
 
 ## Objetivos:
 
-- *Aplicar los conceptos del cifrado de llave privada*
+- *Aplicar los conceptos del cifrado de llave publica*
 
 ### Pre-requisitos 📋
 
@@ -25,6 +25,8 @@
 
 - **Desde Visual Studio 2019**
 - **Peticiones de Json, enviadas desde Postman**
+- **Petición get** api/rsa/{p}/{q}  **parámetros p y q, deberán ser números primos, en el rango 17 a 2000**
+- **Petición post** api/rsa/{name} **En form data, deberá enviar el archivo a cifrar o descifrar, con la llave "file" y la llave publica o privada, con el nombre de llave "key"**
 
 ## Autores ✒️
 
