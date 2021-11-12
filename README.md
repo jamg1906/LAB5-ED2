@@ -5,7 +5,7 @@
 ## RAMAS
 
 - Main -  SDES
-- RSA -  RSA, mejor si sacamos 100 amor :´)
+- RSA -  RSA, mejor si sacamos 100 :´)
 
 ## Construido con 🛠️
 
