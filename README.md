@@ -4,7 +4,8 @@
 
 ## RAMAS
 
-- Main - README
+- Main -  SDES
+- RSA -  RSA, mejor si sacamos 100 amor :´)
 
 ## Construido con 🛠️
 
